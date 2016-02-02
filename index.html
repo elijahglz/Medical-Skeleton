@@ -13,7 +13,8 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-
+        
+        <script src="js/slider.js"></script>
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body>
@@ -42,7 +43,34 @@
 		</nav>
         
         <section>
-            <img src="img/20150128_100607.jpg" style="width: 100%; height: 640px;">
+            <div class="slider has-dots" style="width: 100%; height: 500px; overflow: hidden;">
+                <ul style="display: inline-block; position: relative; left: -200%; width: 300%; height: 500px;">
+                   <li class="slide-1" style="float: left; width: 1140px; background-position: 0% 26px;">
+                       <div class="col-50 boxshot" style="background-position: 50% 52.5px;">
+                         <!-- BG Image -->
+                        </div>
+                   </li>
+                   
+                   <li class="slide-2" data-stellar-background-ratio="0.5" style="float: left; width: 1140px; background-position: 0% 26px;"></li>
+                   <li class="slide-3" data-stellar-background-ratio="0.5" style="float: left; width: 1140px; background-position: 50% 26px;"></li>
+                </ul>
+           
+    
+            <!-- Slider JS -->
+            <script>
+                $(function() {
+                    $('.slider').unslider({
+                        speed: 1000,              //  The speed to animate each slide (in milliseconds)
+                        delay: 6000,              //  The delay between slide animations (in milliseconds)
+                        keys: false,               //  Enable keyboard (left, right) arrow shortcuts
+                        dots: true,               //  Display dot navigation
+                        fluid: true              //  Support responsive design.
+                    });
+                });
+            </script>
+        
+            <ol class="dots"><li class="dot">1</li><li class="dot">2</li><li class="dot">3</li></ol>
+            </div>
         </section>
         
         <section>
@@ -58,6 +86,14 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
 
         <script src="js/main.js"></script>
+        
+        <script>
+            //Fades in the slider - This is to fix an issue which was showing the scroll bars while the page was loading
+            $(document).ready(function(){
+                $("section .slider ul ").fadeIn();
+                $("section .slider ul ").css("display", "inline-block");
+            });
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
